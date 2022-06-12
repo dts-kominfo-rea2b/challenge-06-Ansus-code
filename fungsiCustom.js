@@ -1,5 +1,39 @@
 // TODO: import module bila dibutuhkan di sini
+const bacaData = (fnCallback) ==> {
+const arrayData = [] ;
 
+fs.readFile(file1, {encoding : "utf8" }, (err, data) => {
+  if (err) {
+    return fnCallback (err, null);
+  }
+  
+  let getData = JASON. parse (data) ;
+  let getMessage = getData.message.split (" ");
+  arrayData.push(getMessage[1]);
+  
+  fs.readFile(file2, { encoding: "utf8" }, (err, data) => {
+    if (err) {
+      return fnCallback(err, null);
+    }
+    let getData = JSON.parse(data);
+    let getMessage = getData[0].message.split(" ");
+    arrayData.push(getMessage[1]);
+    
+    
+    fs.readFile(file3, { encoding : "utf8" }, (err, data) => {
+      if (err) {
+        return fnCallback(err, null);
+      }
+      
+      letgetData = JSON.parse(data);
+      letMessage = getData[0].data.message.split(" ");
+      arrayData.push(getMessage[1]);
+      
+      return fncallback(err, arrayData);
+    });
+  });
+});
+});
 // ! JANGAN DIMODIFIKASI
 let file1 = "./data1.json";
 let file2 = "./data2.json";
